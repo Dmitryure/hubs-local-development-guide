@@ -15,7 +15,8 @@ Running it for the first time will take longer than usual because it needs to be
 Enter username and password that you won't forget and install some dependencies
 ```
 sudo apt update
-sudo apt-get install build-essential nodejs npm python3-pip
+sudo apt-get install build-essential python3-pip
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 ```
 
 Next, we will change some code in Reticulum. We will do it with `nano`, but you can do it with Linux GUI for WSL
@@ -110,6 +111,8 @@ We are almost ready, open new terminal window clone hubs and run it:
 ```
 git clone https://github.com/mozilla/hubs.git
 cd hubs
+nvm install 16
+nvm use 16
 npm i
 npm run local
 ```
