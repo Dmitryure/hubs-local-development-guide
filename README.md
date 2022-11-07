@@ -64,13 +64,18 @@ sudo service postgresql start
 ```
 Then enter psql as root with `sudo -u postgres psql` change the password `ALTER USER postgres WITH PASSWORD 'postgres';` and leave `\q`.
 
-To work properly, **Reticulum** requires **Dialog** with properly configured certificates. Let's set them up together:
+To work properly, **Reticulum** and **Hubs"" requires **Dialog** with properly configured certificates. Let's set them up together:
 ```
 git clone https://github.com/mozilla/reticulum.git
 git clone https://github.com/mozilla/dialog.git
+git clone https://github.com/mozilla/hubs.git
 mkdir dialog/certs
+
 cp reticulum/priv/dev-ssl.cert dialog/certs/fullchain.pem
 cp reticulum/priv/dev-ssl.key dialog/certs/privkey.pem
+mkdir hubs/certs
+cp reticulum/priv/dev-ssl.cert dialog/certs/cert.pem
+cp reticulum/priv/dev-ssl.key dialog/certs/key.pem
 ```
 And that is not all, we need to set up authentication key as well. Go to https://travistidwell.com/jsencrypt/demo/ click "Generate keys" button. And paste left key to `perms_key` variable so it looks like this 
 ![image](https://user-images.githubusercontent.com/33320716/198327332-3da28aa4-7d5a-48e3-acac-b29c5fb2b0b8.png)
@@ -109,7 +114,6 @@ Add these two lines:
 
 We are almost ready, open new terminal window clone hubs and run it:
 ```
-git clone https://github.com/mozilla/hubs.git
 cd hubs
 nvm install 16
 nvm use 16
